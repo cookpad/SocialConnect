@@ -1,0 +1,3 @@
+include ':social-connect'
+include ':app'
+rootProject.name = "SocialConnect"

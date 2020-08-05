@@ -1,0 +1,13 @@
+!.idea/codeStyles/Project.xml
+!.idea/codeStyles/codeStyleConfig.xml
+*.iml
+.gradle
+/local.properties
+.idea/*
+*.ipr
+*.iws
+.DS_Store
+*/build
+/captures
+.externalNativeBuild
+.cxx
