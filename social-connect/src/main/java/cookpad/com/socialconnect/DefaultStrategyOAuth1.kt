@@ -10,7 +10,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 class DefaultStrategyOAuth1 : QueryStringStrategy, Parcelable {
     override fun extractCode(uri: Uri): String? {
-        return uri.getQueryParameter("oauth_verifier")
+        return uri.getQueryParameter("test")
     }
 
     override fun extractError(uri: Uri): String? {
