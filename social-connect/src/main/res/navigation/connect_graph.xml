@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/connect_graph"
+    app:startDestination="@id/connectFragment">
+
+    <fragment
+        android:id="@+id/connectFragment"
+        android:name="cookpad.com.socialconnect.ConnectFragment"
+        tools:layout="@layout/fragment_connect">
+        <argument
+            android:name="serviceConfig"
+            app:argType="cookpad.com.socialconnect.OAuthServiceConfig" />
+        <argument
+            android:name="keyRequestCode"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

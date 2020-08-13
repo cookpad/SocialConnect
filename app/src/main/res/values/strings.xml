@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SocialConnect</string>
+    <string name="twitter_connect">Connect with Twitter</string>
+    <string name="github_connect">Connect with Github</string>
 </resources>
