@@ -11,3 +11,5 @@
 /captures
 .externalNativeBuild
 .cxx
+.build
+app/src/main/java/cookpad/com/sample/Credentials.kt
