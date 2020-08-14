@@ -22,6 +22,8 @@ dependencies {
 `ConnectFragment` is the entry point of SocialConnect library. To use it, add the `connect_graph` as a destination to your nav graph file, as follow:
 
 ```xml
+<include app:graph="@navigation/connect_graph" />
+
 <fragment
     android:id="@+id/yourFrgment"
     android:name=".YourFragment"
@@ -39,7 +41,7 @@ dependencies {
 </fragment>
 ```
 
-This will generate `YourFragmentDirections.actionConnectionsFragmentToConnectFragment` which expects an `OAuthServiceConfig` instance and provides the `NavDirection` to access `ConnectFragment` from your nav graph.
+This will generate `YourFragmentDirections.actionYourFragmentToConnectFragment` which expects an `OAuthServiceConfig` instance and provides the `NavDirection` to access `ConnectFragment` from your nav graph.
 
 OAuth1 with Twitter provider:
 
