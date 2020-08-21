@@ -5,11 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import java.io.IOException
-import java.util.concurrent.ExecutionException
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 
+@Suppress("TooGenericExceptionCaught")
 internal class ConnectViewModel(
     private val serviceHelper: ServiceHelper,
     private val coroutineDispatcher: CoroutineContext = EmptyCoroutineContext
@@ -20,29 +19,21 @@ internal class ConnectViewModel(
 
     init {
         viewModelScope.launch(context = coroutineDispatcher) {
-            safeExecution {
+            try {
                 _viewStates.value = ViewState.LoadUrl(serviceHelper.authUrl())
+            } catch (error: Throwable) {
+                _viewStates.value = ViewState.FinishWithError(error)
             }
         }
     }
 
     fun retrieveToken(url: String) {
         viewModelScope.launch(context = coroutineDispatcher) {
-            safeExecution {
+            try {
                 _viewStates.value = ViewState.FinishWithToken(serviceHelper.token(url))
+            } catch (error: Throwable) {
+                _viewStates.value = ViewState.FinishWithError(error)
             }
-        }
-    }
-
-    private suspend fun safeExecution(exec: suspend () -> Unit) {
-        try {
-            exec()
-        } catch (error: IOException) {
-            _viewStates.value = ViewState.FinishWithError(error)
-        } catch (error: InterruptedException) {
-            _viewStates.value = ViewState.FinishWithError(error)
-        } catch (error: ExecutionException) {
-            _viewStates.value = ViewState.FinishWithError(error)
         }
     }
 }
